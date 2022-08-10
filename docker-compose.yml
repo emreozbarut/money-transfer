@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  money-transfer:                        
+    image: money-transfer-service             
+    container_name: money-transfer  
+    build:
+      context: .                        
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:file:./data/transfers
