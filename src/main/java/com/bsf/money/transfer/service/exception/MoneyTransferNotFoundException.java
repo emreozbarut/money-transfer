@@ -10,8 +10,9 @@ public class MoneyTransferNotFoundException extends BaseException
     {
         super(message, errorCode);
     }
-    
-    public static MoneyTransferNotFoundException of(String message, ErrorCode errorCode) {
+
+    public static MoneyTransferNotFoundException of(String message, ErrorCode errorCode)
+    {
         return new MoneyTransferNotFoundException(message, errorCode);
     }
 }

@@ -22,30 +22,34 @@ public class AccountRepositoryTest
 {
     @Autowired
     private AccountRepository accountRepository;
-    
+
     @Test
     public void shouldSaveAccountAndFindById()
     {
         Account account = accountRepository.save(Account.builder().balance(BigDecimal.TEN).name("test").build());
-        Account accountFromDB = accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account not found", ErrorCode.ACCOUNT_NOT_FOUND));
-        
+        Account accountFromDB =
+                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account " +
+                        "not found", ErrorCode.ACCOUNT_NOT_FOUND));
+
         assertEquals(account.getId(), accountFromDB.getId());
         assertEquals("test", accountFromDB.getName());
         assertEquals(account.getName(), accountFromDB.getName());
         assertEquals(account.getBalance(), accountFromDB.getBalance());
     }
-    
+
     @Test
     public void shouldUpdateAccount_whenBalanceChanged()
     {
         Account account = accountRepository.save(Account.builder().balance(BigDecimal.TEN).name("test").build());
         BigDecimal oldBalance = account.getBalance();
-        
+
         account.setBalance(BigDecimal.ONE);
         accountRepository.save(account);
-        
-        Account accountFromDB = accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account not found", ErrorCode.ACCOUNT_NOT_FOUND));
-        
+
+        Account accountFromDB =
+                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account " +
+                        "not found", ErrorCode.ACCOUNT_NOT_FOUND));
+
         assertNotEquals(oldBalance, accountFromDB.getBalance());
         assertEquals(BigDecimal.ONE.doubleValue(), accountFromDB.getBalance().doubleValue());
     }

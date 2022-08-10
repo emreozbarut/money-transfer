@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bsf.money.transfer.service.model.MoneyTransfer;
 
 @Repository
-public interface MoneyTransferRepository extends JpaRepository<MoneyTransfer, Long> {
+public interface MoneyTransferRepository extends JpaRepository<MoneyTransfer, Long>
+{
 }

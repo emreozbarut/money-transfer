@@ -13,27 +13,31 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestControllerAdvice
-public class MoneyTransferControllerAdvice {
+public class MoneyTransferControllerAdvice
+{
 
     private static final String LOG_MESSAGE = "MoneyTransferControllerAdvice handles %s";
-    
+
     @ExceptionHandler(AccountNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String accountNotFoundHandler(AccountNotFoundException exception) {
+    String accountNotFoundHandler(AccountNotFoundException exception)
+    {
         log.info(String.format(LOG_MESSAGE, exception.getClass().getName()));
         return exception.getMessage();
     }
-    
+
     @ExceptionHandler(BalanceNotEnoughException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    String balanceNotEnoughHandler(BalanceNotEnoughException exception) {
+    String balanceNotEnoughHandler(BalanceNotEnoughException exception)
+    {
         log.info(String.format(LOG_MESSAGE, exception.getClass().getName()));
         return exception.getMessage();
     }
 
     @ExceptionHandler(MoneyTransferNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String balanceNotEnoughHandler(MoneyTransferNotFoundException exception) {
+    String balanceNotEnoughHandler(MoneyTransferNotFoundException exception)
+    {
         log.info(String.format(LOG_MESSAGE, exception.getClass().getName()));
         return exception.getMessage();
     }

@@ -21,17 +21,20 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/money/transfer")
-public class MoneyTransferController {
-    
+public class MoneyTransferController
+{
+
     private final MoneyTransferService moneyTransferService;
-    
+
     @PostMapping("/")
-    public MoneyTransferResponse transferMoney(@Valid @RequestBody MoneyTransferRequest request) {
+    public MoneyTransferResponse transferMoney(@Valid @RequestBody MoneyTransferRequest request)
+    {
         return moneyTransferService.transferMoney(request);
     }
-    
+
     @GetMapping("/{transferId}")
-    public RetrieveTransferResponse retrieveTransfer(@PathVariable("transferId") Long transferId) {
+    public RetrieveTransferResponse retrieveTransfer(@PathVariable("transferId") Long transferId)
+    {
         return moneyTransferService.retrieveTransfer(transferId);
     }
 }

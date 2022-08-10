@@ -18,8 +18,9 @@ public class MoneyTransferDTO
     private Long accountToId;
     private Date createdAt;
     private Date updatedAt;
-    
-    public static MoneyTransferDTO convert(MoneyTransfer moneyTransfer) {
+
+    public static MoneyTransferDTO convert(MoneyTransfer moneyTransfer)
+    {
         return MoneyTransferDTO.builder()
                 .id(moneyTransfer.getId())
                 .amount(moneyTransfer.getAmount())

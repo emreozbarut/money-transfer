@@ -17,6 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateAccountRequest extends Request
 {
-    @NotBlank private String name;
+    @NotBlank
+    private String name;
     private BigDecimal balance;
 }

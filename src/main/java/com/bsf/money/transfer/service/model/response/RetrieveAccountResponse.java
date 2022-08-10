@@ -15,13 +15,15 @@ public class RetrieveAccountResponse extends Response
 {
     @ApiModelProperty(value = "account field")
     private final AccountDTO account;
-    
-    public RetrieveAccountResponse(HttpStatus httpStatus, AccountDTO account) {
+
+    public RetrieveAccountResponse(HttpStatus httpStatus, AccountDTO account)
+    {
         super(httpStatus);
         this.account = account;
     }
-    
-    public static RetrieveAccountResponse of(HttpStatus httpStatus, AccountDTO account) {
+
+    public static RetrieveAccountResponse of(HttpStatus httpStatus, AccountDTO account)
+    {
         return new RetrieveAccountResponse(httpStatus, account);
     }
 }

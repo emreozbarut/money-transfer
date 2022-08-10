@@ -25,6 +25,7 @@ public class MoneyTransferServiceImpl implements MoneyTransferService
 {
     private final MoneyTransferRepository moneyTransferRepository;
     private final AccountService accountService;
+
     @Override
     @Transactional
     public MoneyTransferResponse transferMoney(MoneyTransferRequest request)
@@ -33,7 +34,7 @@ public class MoneyTransferServiceImpl implements MoneyTransferService
         AccountDTO.convert(accountFrom).validateBalance(request.getAmount());
         accountFrom.setBalance(accountFrom.getBalance().subtract(request.getAmount()));
         accountService.save(accountFrom);
-        
+
         Account accountTo = accountService.getById(request.getAccountTo());
         MoneyTransfer moneyTransfer = MoneyTransfer.builder()
                 .from(accountFrom)
@@ -44,7 +45,7 @@ public class MoneyTransferServiceImpl implements MoneyTransferService
         
         accountTo.setBalance(accountTo.getBalance().add(request.getAmount()));
         accountService.save(accountTo);
-        
+
         return MoneyTransferResponse.of(HttpStatus.CREATED, transfer.getId());
     }
 
@@ -53,8 +54,9 @@ public class MoneyTransferServiceImpl implements MoneyTransferService
     {
         return RetrieveTransferResponse.of(HttpStatus.FOUND, MoneyTransferDTO.convert(getById(transferId)));
     }
-    
-    private MoneyTransfer getById(Long transferId) {
+
+    private MoneyTransfer getById(Long transferId)
+    {
         return moneyTransferRepository.findById(transferId).orElseThrow(() -> MoneyTransferNotFoundException.of(String.format("MoneyTransfer not found with id: %d", transferId), ErrorCode.MONEY_TRANSFER_NOT_FOUND));
     }
 }

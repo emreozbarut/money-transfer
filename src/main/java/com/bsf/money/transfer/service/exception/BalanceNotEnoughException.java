@@ -8,8 +8,9 @@ public class BalanceNotEnoughException extends BaseException
     {
         super(message, errorCode);
     }
-    
-    public static BalanceNotEnoughException of(String message, ErrorCode errorCode) {
+
+    public static BalanceNotEnoughException of(String message, ErrorCode errorCode)
+    {
         return new BalanceNotEnoughException(message, errorCode);
     }
 }

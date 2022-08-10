@@ -15,13 +15,15 @@ public class RetrieveTransferResponse extends Response
 {
     @ApiModelProperty(value = "moneyTransfer field")
     private final MoneyTransferDTO moneyTransfer;
-    
-    public RetrieveTransferResponse(HttpStatus httpStatus, MoneyTransferDTO moneyTransfer) {
+
+    public RetrieveTransferResponse(HttpStatus httpStatus, MoneyTransferDTO moneyTransfer)
+    {
         super(httpStatus);
         this.moneyTransfer = moneyTransfer;
     }
-    
-    public static RetrieveTransferResponse of(HttpStatus httpStatus, MoneyTransferDTO moneyTransfer) {
+
+    public static RetrieveTransferResponse of(HttpStatus httpStatus, MoneyTransferDTO moneyTransfer)
+    {
         return new RetrieveTransferResponse(httpStatus, moneyTransfer);
     }
 }

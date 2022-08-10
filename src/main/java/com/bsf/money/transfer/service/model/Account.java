@@ -32,7 +32,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public final class Account {
+public final class Account
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,10 +52,10 @@ public final class Account {
     @UpdateTimestamp
     @Column(name = "updatedAt")
     private Date updatedAt;
-    
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "to")
     private Set<MoneyTransfer> sentTransfers = new HashSet<>();
-    
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "from")
     private Set<MoneyTransfer> receivedTransfers = new HashSet<>();
 }

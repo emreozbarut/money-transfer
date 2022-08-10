@@ -22,27 +22,29 @@ import lombok.extern.slf4j.Slf4j;
 public class AccountServiceImpl implements AccountService
 {
     private final AccountRepository accountRepository;
-    
+
     @Override
     public Account getById(Long id)
     {
         log.info(String.format("Account retrieved with id: %d", id));
         return accountRepository.findById(id)
-                .orElseThrow(() -> AccountNotFoundException.of(String.format("Account not found with id: %d", id), ErrorCode.ACCOUNT_NOT_FOUND));
+                .orElseThrow(() -> AccountNotFoundException.of(String.format("Account not found with id: %d", id),
+                        ErrorCode.ACCOUNT_NOT_FOUND));
     }
 
     @Override
     public CreateAccountResponse createAccount(CreateAccountRequest request)
     {
-        Account account = accountRepository.save(Account.builder().name(request.getName()).balance(request.getBalance()).build());
+        Account account =
+                accountRepository.save(Account.builder().name(request.getName()).balance(request.getBalance()).build());
         log.info(String.format("Account created with id: %d", account.getId()));
         return CreateAccountResponse.of(HttpStatus.CREATED, AccountDTO.convert(account));
     }
 
     @Override
-    public void save(Account account)
+    public Account save(Account account)
     {
-        accountRepository.save(account);
+        return accountRepository.save(account);
     }
 
     @Override

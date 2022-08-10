@@ -25,16 +25,18 @@ import lombok.RequiredArgsConstructor;
 public class AccountController
 {
     private final AccountService accountService;
-    
+
     @PostMapping("/")
     @ApiOperation(value = "Creates account")
-    public CreateAccountResponse createAccount(@Valid @RequestBody CreateAccountRequest request) {
+    public CreateAccountResponse createAccount(@Valid @RequestBody CreateAccountRequest request)
+    {
         return accountService.createAccount(request);
     }
-    
+
     @GetMapping("/{accountId}")
     @ApiOperation(value = "Retrieve account")
-    public RetrieveAccountResponse getAccount(@PathVariable("accountId") Long accountId) {
+    public RetrieveAccountResponse getAccount(@PathVariable("accountId") Long accountId)
+    {
         return accountService.retrieveBy(accountId);
     }
 }

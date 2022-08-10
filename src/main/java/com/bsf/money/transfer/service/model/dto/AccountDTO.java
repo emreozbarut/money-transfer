@@ -19,8 +19,9 @@ public class AccountDTO
     private BigDecimal balance;
     private Date createdAt;
     private Date updatedAt;
-    
-    public static AccountDTO convert(Account account) {
+
+    public static AccountDTO convert(Account account)
+    {
         return AccountDTO.builder()
                 .accountId(account.getId())
                 .name(account.getName())
@@ -34,7 +35,8 @@ public class AccountDTO
     {
         if (amount.compareTo(this.getBalance()) > 0)
         {
-            throw BalanceNotEnoughException.of(String.format("Balance not enough for account_id: %d with amount: %.2f", this.getAccountId(), amount.doubleValue()), ErrorCode.BALANCE_NOT_ENOUGH);
+            throw BalanceNotEnoughException.of(String.format("Balance not enough for account_id: %d with amount: %" +
+                    ".2f", this.getAccountId(), amount.doubleValue()), ErrorCode.BALANCE_NOT_ENOUGH);
         }
     }
 }

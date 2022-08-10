@@ -11,7 +11,7 @@ public interface AccountService
 
     CreateAccountResponse createAccount(CreateAccountRequest request);
 
-    void save(Account account);
+    Account save(Account account);
 
     RetrieveAccountResponse retrieveBy(Long accountId);
 }
