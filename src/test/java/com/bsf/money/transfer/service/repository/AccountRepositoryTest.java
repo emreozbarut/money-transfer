@@ -33,7 +33,7 @@ public class AccountRepositoryTest
         assertEquals(account.getId(), accountFromDB.getId());
         assertEquals("test", accountFromDB.getName());
         assertEquals(account.getName(), accountFromDB.getName());
-        assertEquals(account.getBalance(), accountFromDB.getBalance());
+        assertEquals(account.getBalance().doubleValue(), accountFromDB.getBalance().doubleValue());
     }
 
     @Test
