@@ -28,8 +28,7 @@ public class AccountRepositoryTest
     {
         Account account = accountRepository.save(Account.builder().balance(BigDecimal.TEN).name("test").build());
         Account accountFromDB =
-                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account " +
-                        "not found", ErrorCode.ACCOUNT_NOT_FOUND));
+                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account not found", ErrorCode.ACCOUNT_NOT_FOUND));
 
         assertEquals(account.getId(), accountFromDB.getId());
         assertEquals("test", accountFromDB.getName());
@@ -47,8 +46,7 @@ public class AccountRepositoryTest
         accountRepository.save(account);
 
         Account accountFromDB =
-                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account " +
-                        "not found", ErrorCode.ACCOUNT_NOT_FOUND));
+                accountRepository.findById(account.getId()).orElseThrow(() -> AccountNotFoundException.of("Account not found", ErrorCode.ACCOUNT_NOT_FOUND));
 
         assertNotEquals(oldBalance, accountFromDB.getBalance());
         assertEquals(BigDecimal.ONE.doubleValue(), accountFromDB.getBalance().doubleValue());

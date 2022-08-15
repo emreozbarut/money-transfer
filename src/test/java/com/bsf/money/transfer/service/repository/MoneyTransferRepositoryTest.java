@@ -63,7 +63,7 @@ public class MoneyTransferRepositoryTest
 
         RetrieveTransferResponse response = moneyTransferService.retrieveTransfer(moneyTransfer.getId());
 
-        assertEquals(HttpStatus.FOUND, response.getStatus());
+        assertEquals(HttpStatus.OK, response.getStatus());
         assertEquals(moneyTransfer.getId(), response.getMoneyTransfer().getId());
     }
 }

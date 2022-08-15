@@ -50,6 +50,6 @@ public class AccountServiceImpl implements AccountService
     @Override
     public RetrieveAccountResponse retrieveBy(Long accountId)
     {
-        return RetrieveAccountResponse.of(HttpStatus.FOUND, AccountDTO.convert(getById(accountId)));
+        return RetrieveAccountResponse.of(HttpStatus.OK, AccountDTO.convert(getById(accountId)));
     }
 }

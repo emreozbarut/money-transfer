@@ -52,7 +52,7 @@ public class MoneyTransferServiceImpl implements MoneyTransferService
     @Override
     public RetrieveTransferResponse retrieveTransfer(Long transferId)
     {
-        return RetrieveTransferResponse.of(HttpStatus.FOUND, MoneyTransferDTO.convert(getById(transferId)));
+        return RetrieveTransferResponse.of(HttpStatus.OK, MoneyTransferDTO.convert(getById(transferId)));
     }
 
     private MoneyTransfer getById(Long transferId)
